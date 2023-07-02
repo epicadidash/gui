@@ -1,5 +1,5 @@
 
-[+] Checking Video URL...
+[+] Checking Video URL
 [1] Download in <strong>HD</strong> Quality
 [2] Download in Normal Quality
 [3] Audio Only
