@@ -3,7 +3,6 @@ use gtk::{glib, Application, ApplicationWindow, Button};
 use gtk::glib::GString;
 use std::option::Option;
 const APP_ID: &str = "org.gtk_rs.HelloWorld3";
-
 fn main() -> glib::ExitCode {
     // Create a new application
     let app = Application::builder().application_id(APP_ID).build();
@@ -14,7 +13,6 @@ fn main() -> glib::ExitCode {
     // Run the application
     app.run()
 }
-
 fn build_ui(app: &Application) {
     // Create a button with label and margins
     let button = Button::builder()
