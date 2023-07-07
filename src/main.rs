@@ -22,7 +22,6 @@ fn build_ui(app: &Application) {
         .margin_start(12)
         .margin_end(12)
         .build();
-
     // Connect to "clicked" signal of `button`
     button.connect_clicked(|button| {
         let my_string: Option<GString> = Some("Press me!".into());
@@ -33,16 +32,13 @@ fn build_ui(app: &Application) {
             button.set_label("Press me!")
         }
         // Set the label to "Hello World!" after the button has been clicked on
-        
     });
-
     // Create a window
     let window = ApplicationWindow::builder()
         .application(app)
         .title("My GTK App")
         .child(&button)
         .build();
-
     // Present window
     window.present();
 }
