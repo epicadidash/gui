@@ -36,7 +36,7 @@ fn build_ui(app: &Application) {
     gtk_box.append(&input);
     gtk_box.append(&button);
 
-    button.connect_clicked(move | _button| {
+    button.connect_clicked( | _button| {
         println!("{}", input.text().as_str()); 
     });
 
