@@ -1,4 +1,4 @@
-use gtk::prelude::*;
+use gtk::{prelude::*, Orientation};
 use gtk::{glib, Application, ApplicationWindow, Button};
 use gtk::glib::GString;
 use std::option::Option;
@@ -14,31 +14,39 @@ fn main() -> glib::ExitCode {
     app.run()
 }
 fn build_ui(app: &Application) {
-    // Create a button with label and margins
     let button = Button::builder()
-        .label("Press me!")
+        .label("Submit")
         .margin_top(12)
         .margin_bottom(12)
         .margin_start(12)
         .margin_end(12)
         .build();
-    // Connect to "clicked" signal of `button`
-    button.connect_clicked(|button| {
-        let my_string: Option<GString> = Some("Press me!".into());
-        if button.label() == my_string {
-            button.set_label("Hello World!");
-        }
-        else {
-            button.set_label("Press me!")
-        }
-        // Set the label to "Hello World!" after the button has been clicked on
+
+    let input = gtk::Entry::builder()
+        .placeholder_text("input")
+        .margin_top(12)
+        .margin_bottom(12)
+        .margin_start(12)
+        .margin_end(12)
+        .build();
+
+    let gtk_box = gtk::Box::builder()
+        .orientation(Orientation::Vertical)
+        .build();
+    gtk_box.append(&input);
+    gtk_box.append(&button);
+
+    button.connect_clicked(move | _button| {
+        println!("{}", input.text().as_str()); 
     });
-    // Create a window
+
     let window = ApplicationWindow::builder()
         .application(app)
-        .title("My GTK App")
-        .child(&button)
+        .title("gtk-app")
+        .child(&gtk_box)
+        .default_height(720)
+        .default_width(360)
         .build();
-    // Present window
+
     window.present();
 }
