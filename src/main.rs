@@ -1,7 +1,5 @@
 use gtk::{prelude::*, Orientation};
 use gtk::{glib, Application, ApplicationWindow, Button};
-use gtk::glib::GString;
-use std::option::Option;
 const APP_ID: &str = "org.gtk_rs.HelloWorld3";
 fn main() -> glib::ExitCode {
     // Create a new application
@@ -35,17 +33,25 @@ fn build_ui(app: &Application) {
         .build();
     gtk_box.append(&input);
     gtk_box.append(&button);
+    button.connect_clicked( move | _button| {
+        let star =  input.text().as_str();
+        let ret :bool =  star.trim().is_empty() ;
+        if ret {
+            
+            println!("Empty string");
+        }
+        else {
+            print!("{}",star.trim());
+        }
 
-    button.connect_clicked( | _button| {
-        println!("{}", input.text().as_str()); 
     });
 
     let window = ApplicationWindow::builder()
         .application(app)
         .title("gtk-app")
         .child(&gtk_box)
-        .default_height(720)
-        .default_width(360)
+        .default_height(900)
+        .default_width(500)
         .build();
 
     window.present();
