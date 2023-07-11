@@ -34,7 +34,7 @@ fn build_ui(app: &Application) {
     gtk_box.append(&input);
     gtk_box.append(&button);
     button.connect_clicked( move | _button| {
-        let star =  input.text().as_str();
+        //let star =  input.text().as_str();
         let ret :bool =  star.trim().is_empty() ;
         if ret {
             
